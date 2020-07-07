@@ -1,0 +1,179 @@
+     <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Register Client</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard v1</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+   <section class="content">
+      <div class="container-fluid">
+           <!-- /.row -->
+        <div class="row dBank animate__animated animate__zoomIn">
+         <!-- /.col -->
+              <div class="col-md-6">
+         
+            <div class="login-boxr">
+
+  <!-- /.login-logo -->
+  <div class="card bordert">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Create Customer</p>
+    
+
+    
+  
+    <form action="./create" method="post" enctype="multipart/form-data" >
+
+      {{#each errors}}
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{message}}
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+        </div>
+
+        {{/each}}
+
+
+
+
+      <label for="expityMonth">First Name</label>
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" requiredd name="firstName" value="{{firstName}}" placeholder="Enter First Name">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <label for="expityMonth">Last Name</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="account"  requsired name="lastName" value="{{lastName}}"  placeholder="Enter Last Name">
+         <h2 id="account_no"></h2>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+       <label for="expityMonth">Email</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" requsired name="email" value="{{email}}"  placeholder="Enter Email Address">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+     <!-- /.form group -->
+        <label for="expityMonth">Password</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" requidred  name="password" value="{{password}}"  placeholder="Enter Password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+           <label for="expityMonth">Confirm Password</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" requidred  name="passwordConfirm" value="{{passwordConfirm}}"  placeholder="Enter Confirm Password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+        <label for="expityMonth">Pin</label>
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" requsired name="pincode" value="{{pincode}}"  placeholder="Enter Pin Code">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+       <label for="expityMonth">Initial Deposit</label>
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" requsired name="deposit" value="{{deposit}}"  placeholder="Enter Amount Deposit">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+          </div>
+ 
+
+      <div class="form-group">
+            <label for="status">Account Type</label>
+            <select name="accountType" class="form-control" id="status">               
+              <option value="saving">Saving</option>
+              <option value="current">Current</option>                  
+            </select> 
+        </div>
+
+        <label for="expityMonth">Means Of Verification</label>
+        <div class="input-group mb-3">
+          <input type="file" class="form-control" requsired name="meansOfVeri"   >
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+
+
+     <div class="social-auth-links text-center mb-3">
+       
+     <button type="submit" class="btn btn-block btn-success">
+            Register User
+    </button>
+ 
+   </div>
+     
+      </form>
+      <a href="/admin/manage" class="btn btn-block btn-primary">
+            Go Back
+      </a>
+ 
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+
+            <!-- /.row -->
+
+        
+              <!-- /.row -->
+</div>
+<!-- /.login-box -->
+
+
+            </div>
+
+       
+        </div>
+
+      </div><!-- /.container-fluid -->
+      
+    </section>

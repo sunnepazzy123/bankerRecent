@@ -1,0 +1,42 @@
+.hrk .transfer{
+    display: inline-block;
+    margin: 0 0.5rem;
+  
+    animation: bounce; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 5; /* don't forget to set a duration! */
+
+ 
+  }
+
+
+  .profile{
+    display: inline-block;
+    margin: 0 0.5rem;
+  
+    animation: ease-in;  /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 5; /* don't forget to set a duration! */
+
+  }
+
+
+  .dBank{
+    display: inline-block;
+    margin: 0 0.5rem;
+  
+    animation: linear; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 5; /* don't forget to set a duration! */
+
+  }
+
+  .successBank{
+
+    display: inline-block;
+    margin: 0 0.5rem;
+    animation-delay: 800ms;
+    
+  
+    animation: ease; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 900ms; /* don't forget to set a duration! */
+
+  }
+ 

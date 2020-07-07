@@ -1,0 +1,154 @@
+     <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Update Client</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard v1</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+{{!-- 
+    {{#if success_message}}
+
+      {{success_message}}
+
+    {{/if}} --}}
+
+
+   <section class="content">
+      <div class="container-fluid">
+           <!-- /.row -->
+        <div class="row">
+         <!-- /.col -->
+              <div class="col-md-6">
+         
+            <div class="login-boxr">
+
+  <!-- /.login-logo -->
+  <div class="card bordert">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Update Customer</p>
+    
+
+    <form action="./{{user.id}}?_method=PUT" method="post" >
+
+      {{#each errors}}
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{message}}
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+        </div>
+
+        {{/each}}
+
+
+
+
+      <label for="expityMonth">First Name</label>
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" requiredd name="firstName" value="{{user.firstName}}" placeholder="Enter First Name">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <label for="expityMonth">Last Name</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" id="account"  requsired name="lastName" value="{{user.lastName}}"  placeholder="Enter Last Name">
+         <h2 id="account_no"></h2>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+       <label for="expityMonth">Email</label>
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" requsired name="email" value="{{user.email}}"  placeholder="Enter Email Address">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+
+      <!-- /.form group -->
+
+        <label for="expityMonth">Password</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" requidred  name="password" value="{{user.password}}"  placeholder="Enter Password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+        
+        <label for="expityMonth">Account Number</label>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" requidred  name="account" value="{{user.account}}"  placeholder="Enter Password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+        <label for="expityMonth">Pin</label>
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" requsired name="pincode" value="{{user.pincode}}"  placeholder="Enter Pin Code">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+
+
+     <div class="social-auth-links text-center mb-3">
+       
+     <button type="submit" class="btn btn-block btn-success">
+            Update User
+    </button>
+   </div>
+     
+      </form>
+ 
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+
+            <!-- /.row -->
+
+        
+              <!-- /.row -->
+</div>
+<!-- /.login-box -->
+
+
+            </div>
+
+       
+        </div>
+
+      </div><!-- /.container-fluid -->
+      
+    </section>

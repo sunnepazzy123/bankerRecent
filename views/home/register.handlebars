@@ -1,0 +1,87 @@
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3>Register</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /bradcam_area  -->
+
+
+
+
+
+
+<div class="card card-register mx-auto mt-5 registerCard">
+    <div class="card-header">Register an Account</div>
+    
+    <div class="card-body">
+        <form action="/register" method="post">
+        
+        {{#each errors}}
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{message}}
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+        </div>
+
+        {{/each}}
+
+            {{#if error_message}}
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{error_message}}
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+        </div>
+
+        {{/if}}
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="exampleInputName">First name</label>
+                        <input value="{{firstName}}" requi name="firstName" class="form-control" id="exampleInputName" type="text" aria-describedby="nameHelp" placeholder="Enter first name">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleInputLastName">Last name</label>
+                        <input value="{{lastName}}" requir name="lastName" class="form-control" id="exampleInputLastName" type="text" aria-describedby="nameHelp" placeholder="Enter last name">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input value="{{email}}"requir name="email" class="form-control" id="exampleInputEmail1" type="email" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input requir name="password" class="form-control" id="exampleInputPassword1" type="password" placeholder="Password">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="exampleConfirmPassword">Confirm password</label>
+                        <input requir name="passwordConfirm" class="form-control" id="exampleConfirmPassword" type="password" placeholder="Confirm password">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+        <div class="text-center">
+            <a class="d-block small mt-3" href="/login">Login Page</a>
+            <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+            <a class="d-block small" href="/">Home Page?</a>
+        </div>
+    </div>
+</div>

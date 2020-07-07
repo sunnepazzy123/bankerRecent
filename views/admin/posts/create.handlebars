@@ -1,0 +1,123 @@
+<h1>Create Posts</h1>
+
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Create Post</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+       {{#each errors}}
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{message}}
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+        </div>
+
+        {{/each}}
+              <form role="form" action="/admin/posts/create" method="POST" enctype="multipart/form-data"  >
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputTitle">Title</label>
+                    <input type="text" name="title" class="form-control" id="exampleInputTitle" placeholder="Enter Title">
+                  </div>
+                  {{!-- <div class="form-group">
+                    <label for="exampleInputAuthor">Author</label>
+                    <input type="text" name="author" class="form-control" id="exampleInputAuthor" placeholder="Enter Author's Name">
+                  </div> --}}
+                    <div class="form-group">
+                        <label for="status">Category</label>
+
+                        <select name="category" class="form-control" id="status">
+                         {{#each categories}}
+                          <option value="{{id}}">{{name}}</option>
+                          {{/each}}
+                        </select> 
+
+                    </div>
+
+                    <div class="form-group">
+                    <label for="exampleInputAuthor">Image</label>
+                    <input type="file" name="file" class="form-control" id="exampleInputFile" placeholder="Enter">
+                  </div>
+
+                  
+            
+                  {{!-- <div class="form-group">
+                    <label for="exampleInputFile">File input</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" name="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div>
+                    </div>
+                  </div> --}}
+                <div class="form-group">
+                        <label for="status">Status</label>
+
+                        <select name="status" class="form-control" id="status">
+                            <option value="public">Public</option>
+                             <option value="private">Private</option>
+                              <option value="draft">Draft</option>
+                        </select>
+
+
+                    </div>
+                    
+                        <div class="form-check">
+                        <label for="form-check" class="form-check-label">
+                        <input name="allowComments" type="checkbox" class="form-check-input" id="allowComments" >
+                        
+                        Allow Comments
+
+                        </label>
+
+                        </div>
+
+                        <div class="form-group">
+                        <label for="body">Body</label>
+                        <textarea name="body" class="form-control" requireds cols="30" rows="10" id="title" placeholder="Enter Description"></textarea>
+                    </div>
+
+                    
+                    <div class="form-group">
+                    <label for="exampleInputTag">Tags</label>
+                    <input type="text" name="tag" class="form-control" id="exampleInputTag" placeholder="Enter Tgas Name">
+                  </div>
+{{!-- 
+                    <div class="form-group">
+                    <label for="exampleInputAuthor">Upload Torrent File</label>
+                    <input type="file" name="file1" class="form-control" id="exampleInputFile" placeholder="Enter">
+                  </div> --}}
+
+                 
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Create Post</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+      
+ 
+
+          </div>
+          <!--/.col (left) -->
+         
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->

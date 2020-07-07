@@ -1,0 +1,133 @@
+     <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Dosmestic Bank Transfer</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard v1</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+{{!-- 
+    {{#if success_message}}
+
+      {{success_message}}
+
+    {{/if}} --}}
+
+
+   <section class="content">
+      <div class="container-fluid">
+           <!-- /.row -->
+        <div class="row dBank animate__animated animate__zoomIn">
+         <!-- /.col -->
+              <div class="col-md-6">
+         
+            <div class="login-boxr">
+
+  <!-- /.login-logo -->
+  <div class="card bordert">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Same Bank</p>
+    
+
+
+    <form action="./domestic_bank" method="post" >
+
+      {{#each errors}}
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{message}}
+
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+        </div>
+
+        {{/each}}
+
+
+
+
+      <label for="expityMonth">Name on Receiver</label>
+
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" requiredd name="name" value="{{name}}" placeholder="Name On Reciever">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <label for="expityMonth">Account No</label>
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" requsired name="account" value="{{account}}"  placeholder="Enter Account Number">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+
+      <!-- /.form group -->
+
+        <label for="expityMonth">Amount</label>
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" requidred  name="amount" value="{{amount}}"  placeholder="">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+        <label for="expityMonth">Pin</label>
+        <div class="input-group mb-3">
+          <input type="number" class="form-control" requsired name="pincode" value="{{pincode}}"  placeholder="Enter Pin Code">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+
+
+     <div class="social-auth-links text-center mb-3">
+       
+     <button type="submit" class="btn btn-block btn-success">
+      Pay Now 
+    </button>
+   </div>
+     
+      </form>
+ 
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+
+            <!-- /.row -->
+
+        
+              <!-- /.row -->
+</div>
+<!-- /.login-box -->
+
+
+            </div>
+
+       
+        </div>
+
+      </div><!-- /.container-fluid -->
+      
+    </section>

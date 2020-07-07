@@ -1,0 +1,107 @@
+<h1>Edit Posts</h1>
+
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Edit Post</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+                    
+              <form role="form" action="/admin/posts/edit/{{post.id}}?_method=PUT" method="POST" enctype="multipart/form-data"  >
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="exampleInputTitle">Title</label>
+                    <input type="text" name="title" class="form-control" value="{{post.title}}" id="exampleInputTitle" placeholder="Enter Title">
+                  </div>
+                  {{!-- <div class="form-group">
+                    <label for="exampleInputAuthor">Author</label>
+                    <input type="text" name="author" class="form-control" value="{{post.author}}" id="exampleInputAuthor" placeholder="Enter Author's Name">
+                  </div> --}}
+
+                        <div class="form-group">
+                        <label for="status">Category</label>
+                        <select name="status" class="form-control" id="status">
+                                 {{#select post.category}}
+
+                                {{#each categories}}
+
+                                <option value="{{id}}">{{name}}</option>
+
+                                {{/each}}
+
+                            {{/select}}
+                        </select>
+                         
+                    </div>
+
+                    <div class="form-group">
+                    <label for="exampleInputAuthor">Image</label>
+                    <input type="file" name="file" class="form-control" id="exampleInputFile" placeholder="Enter">
+                  </div>
+            
+                  {{!-- <div class="form-group">
+                    <label for="exampleInputFile">File input</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" name="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div>
+                    </div>
+                  </div> --}}
+                  
+         
+                <div class="form-group">
+                        <label for="status">Status</label>
+                        <select name="status" class="form-control" id="status">
+                              {{#select post.status}}
+
+                                <option value="public">Public</option>
+                                <option value="private">Private</option>
+                                <option value="draft">Draft</option>
+
+                            {{/select}}
+                           
+                        </select>
+                    </div>
+                    
+                        <div class="form-check">
+                        <label for="form-check" class="form-check-label">
+                         <input name="allowComments" type="checkbox" {{#if post.allowComment}} checked="checked" {{/if}} class="form-check-input" id="allowComments">            
+                        Allow Comments
+                        </label>
+
+                        </div>
+
+                        <div class="form-group">
+                        <label for="body">Body</label>
+                        <textarea name="body" class="form-control" requireds cols="30" rows="10" id="title" placeholder="Enter Description">{{post.body}}</textarea>
+                    </div>
+
+                 
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Edit Post</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+      
+ 
+
+          </div>
+          <!--/.col (left) -->
+         
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->

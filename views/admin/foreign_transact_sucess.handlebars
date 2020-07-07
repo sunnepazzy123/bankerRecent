@@ -1,0 +1,95 @@
+     <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Transaction Successful</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard v1</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+
+   <section class="content">
+      <div class="container-fluid">
+           <!-- /.row -->
+        <div class="row">
+         <!-- /.col -->
+              <div class="col-md-6">
+         
+            <div class="login-boxr">
+
+  <!-- /.login-logo -->
+  <div class="card bordert">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Transaction Details</p>
+
+     
+    {{#if success_message}}
+
+      {{success_message}}
+
+    {{/if}} 
+
+
+        {{#if messageDisplay.incorrectPin}}
+
+            <h1>Incorrect Pin!!! Try Again</h1>
+
+        {{/if}}
+
+         {{#if messageDisplay.insufficientFund}}
+
+            <h1>Insufficient Fund!!! Try Again</h1>
+
+        {{/if}}
+
+        
+         {{#if messageDisplay.success}}
+
+            <h1>Transaction Sent Successful!!! Try Again</h1>
+
+        {{/if}}
+        
+
+        {{#if messageDisplay.incorrectPin}}
+
+            <h1>Incorrect Pin!!! Try Again</h1>
+
+        {{/if}}
+
+
+         {{#if messageDisplay.receiverAccount}}
+
+            <h1>Account Number does not Exist !!! Try Again</h1>
+
+        {{/if}}
+
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+
+            <!-- /.row -->
+
+        
+              <!-- /.row -->
+</div>
+<!-- /.login-box -->
+
+
+            </div>
+
+       
+        </div>
+
+      </div><!-- /.container-fluid -->
+      
+    </section>
