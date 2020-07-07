@@ -1,4 +1,4 @@
 module.exports = {
    
-    mongoDbUrl: "mongodb://localhost:27017/cmsPortfolio",
+    mongoDbUrl: "mongodb://localhost:27017/bankapp",
 }
