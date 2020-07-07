@@ -34,9 +34,7 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "sendmail": "^1.6.1",
-    "smart-text-snippet": "^1.0.0"
-  },
-  "devDependencies": {
+    "smart-text-snippet": "^1.0.0",
     "config": "^3.3.1",
     "dotenv": "^8.2.0",
     "nodemon": "^2.0.4"
