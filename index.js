@@ -97,19 +97,10 @@ app.use("/admin/payment", payment);
 
 
 
-// console.log(process.env.NODE_ENV)
-// if(process.env.NODE_ENV === "production"){
-//     module.exports = require(".keys_prod");
-// }else{
-//     module.exports = require(".keys_dev");
-// }
 
-
-
-// const port =  9999
-
+//setting of environment port
 const PORT = process.env.PORT || 9999
 
 app.listen(PORT, ()=>{
-    console.log(`listening to port ${PORT}`)
+    console.log(`listening to port ${PORT}`);
 });
