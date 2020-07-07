@@ -99,7 +99,7 @@ app.use("/admin/payment", payment);
 
 
 //setting of environment port
-const PORT = process.env.PORT || 9999
+const PORT = process.env.PORT || 8080
 
 app.listen(PORT, ()=>{
     console.log(`listening to port ${PORT}`);
