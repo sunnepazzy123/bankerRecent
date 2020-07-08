@@ -19,9 +19,9 @@ const passport = require("passport");
 
 
 //DATABASE CONNECTION
-// const mongoDbUrl = "mongodb://localhost:27017/bankapp" ;
+const mongoDbUrl = "mongodb://localhost:27017/bankapp" ;
 
-    const  mongoDbUrl = process.env.MONGO_DB_URI
+    // const  mongoDbUrl = process.env.MONGO_DB_URI
     
 
 

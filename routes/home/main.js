@@ -101,7 +101,7 @@ User.findOne({email: req.body.email}).then(userFound=>{
                 lastName: req.body.lastName,
                 email: req.body.email,
                 password: req.body.password,
-                account: Math.random(0, 10),       
+                account: Math.floor(Math.random() * 989764521),       
         });
 
     //SAVING THE MODEL INSTANCE
@@ -113,7 +113,7 @@ User.findOne({email: req.body.email}).then(userFound=>{
             debit : 0,
             credit: 0,
             balance: 0,
-            reference: Math.random(),
+            reference: Math.floor(Math.random() * 94521),
             user: user.id,
         };
         //INSTANCIATING A PASSBOOK CLASS
@@ -123,9 +123,7 @@ User.findOne({email: req.body.email}).then(userFound=>{
                 //REDIRECT PAGE TO LOGIN VIEW
                 res.redirect("/login");
 
-
-
-                
+ 
 
             }).catch(err=>{
                 console.log(err);

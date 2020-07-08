@@ -27,10 +27,10 @@ module.exports = {
 
              output += `<li class="nav-item">
              <a href="/admin/manage" class="nav-link">
-               <i class="nav-icon fas fa-th"></i>
+               <i class="nav-icon fas fa-user-tie"></i>
                <p>
                  Manage
-                 <span class="right badge badge-danger">New</span>
+    
                </p>
              </a>
            </li>`;

@@ -4,7 +4,8 @@
         <div class="row mb-2">
           <div class="col-sm-6">
           <span>
-            <i class="fab fa-bitcoin fa-lg" style="font-size:42px"></i>
+            <i class="fa fa-address-book fa-lg" style="font-size:42px"></i>
+             {{!-- <i class="material-icons nav-icons" style="font-size: 40px;">person</i> --}}
            <h1 style="display: inline;">Profile</h1></span>
             <hr>
            
@@ -32,9 +33,10 @@
              <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle"
+                  {{!-- <img class="profile-user-img img-fluid img-circle"
                        src="../../dist/img/user4-128x128.jpg"
-                       alt="User profile picture">
+                       alt="User profile picture"> --}}
+                       <i class="material-icons" style="font-size: 100px;">account_circle</i>
                 </div>
 
                 <h3 class="profile-username text-center text-capitalize"> {{user.firstName}}  {{user.lastName}}</h3>
@@ -49,7 +51,7 @@
                     <b>Account Created</b> <a class="float-right">{{generateDate user.date "LLL"}}</a>
                   </li>
                   <li class="list-group-item">
-                    <b>Status</b> <a class="float-right">{{user.status}}</a>
+                    <b>Status</b> <a class="float-right text-capitalize">{{user.status}}</a>
                   </li>
                 </ul>
 

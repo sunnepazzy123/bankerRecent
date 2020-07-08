@@ -9,7 +9,7 @@ const fs = require("fs");
 
 
 // userAuthenticated,
-router.all("/*",  (req, res, next)=>{
+router.all("/*", userAuthenticated, (req, res, next)=>{
 
     req.app.locals.layout = "admin";
     next();
@@ -556,7 +556,9 @@ router.post("/manage/create", (req, res)=>{
 
 } else {
         
-    let accountNo = Math.random(0, 6);
+ 
+   let accountNo =  Math.floor(Math.random() * 989764521);
+
 
     User.findOne({email: req.body.email}).then(userFound=>{
 
