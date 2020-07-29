@@ -40,11 +40,11 @@ app.use(express.static(path.join(__dirname, "public/admin")));
 
 
 
-const {select, generateDate, smartText, paginate, html_text, detectAdmin , currencyFormat} = require('./helpers/handlebars-helpers');
+const {select, generateDate, smartText, paginate, html_text, detectAdmin , currencyFormat, detectAdminHome} = require('./helpers/handlebars-helpers');
 
 
 // //SET TEMPLATE ENGINE
-app.engine("handlebars", exphbs({defaultLayout: "home", handlebars: allowInsecurePrototypeAccess(Handlebars), helpers: {select: select, smartText: smartText, detectAdmin: detectAdmin, html_text: html_text, currencyFormat: currencyFormat, generateDate: generateDate, paginate: paginate}} ));
+app.engine("handlebars", exphbs({defaultLayout: "home", handlebars: allowInsecurePrototypeAccess(Handlebars), helpers: {select: select, smartText: smartText, detectAdmin: detectAdmin, html_text: html_text, currencyFormat: currencyFormat, detectAdminHome:detectAdminHome,  generateDate: generateDate, paginate: paginate}} ));
 app.set("view engine", "handlebars");
 
 //BODY PARSER

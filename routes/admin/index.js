@@ -608,7 +608,7 @@ router.post("/manage/create", (req, res)=>{
      }else {
 
                     req.flash('error_message', 'That email exist please login');
-                    res.redirect('http://localhost:9999/admin/manage/create');
+                    res.redirect('./create');
 
 
             }

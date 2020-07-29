@@ -19,6 +19,26 @@ module.exports = {
        return snippets.snip(text, {len: 150});
     },
 
+    detectAdminHome: function(role, options ){
+
+        let output = ""
+
+        if(role == "admin"){
+
+             output += `<a href="/admin">Admin</a>`;
+
+           return options.fn() + output;
+
+        }
+
+
+
+    },
+
+
+
+
+
     detectAdmin: function(role, options ){
 
         let output = ""
@@ -42,6 +62,16 @@ module.exports = {
 
 
     },
+
+
+
+
+
+
+
+
+
+
 
 
     currencyFormat: function(val){
