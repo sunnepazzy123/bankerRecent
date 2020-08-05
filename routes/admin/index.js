@@ -42,6 +42,7 @@ router.get("/recent_transaction", (req, res)=>{
      
     Passbook.find({user: req.user.id})
     .populate('users')
+    .sort({date: 1})
     .then(passbookLedger=>{
 
         res.render('admin/recent_transaction', {passbookLedger: passbookLedger});
