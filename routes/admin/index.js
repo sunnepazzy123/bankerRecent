@@ -653,7 +653,8 @@ router.put("/manage/edit/:id", (req, res)=>{
             // console.log("New User upda>te >", user)
             user.save().then(updatedUser=>{
                 req.flash('success_message', 'User updated Successfully');
-                res.redirect("http://localhost:9999/admin/manage");
+                res.redirect("/admin/manage");
+
 
             });
 
