@@ -1,0 +1,230 @@
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          <span>
+            <i class="fa fa-address-book fa-lg" style="font-size:42px"></i>
+             {{!-- <i class="material-icons nav-icons" style="font-size: 40px;">person</i> --}}
+           <h1 style="display: inline;">Packages</h1></span>
+            <hr>
+           
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active text-capitalize"> {{user.lastName}} </li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+   {{!-- {{user.id}} --}}
+    
+    <section class="content">
+      <div class="container-fluid">
+     
+        <div class="row profile animate__animated animate__fadeInLeft">
+           
+
+         <div class="col-md-4">
+             <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  {{!-- <img class="profile-user-img img-fluid img-circle"
+                       src="../../dist/img/user4-128x128.jpg"
+                       alt="User profile picture"> --}}
+                       <i class="fa fa-user" style="font-size: 100px;"></i>
+                </div>
+
+                <h3 class="profile-username text-center text-capitalize"> {{user.firstName}}  {{user.lastName}}</h3>
+
+                <p class="text-muted text-center">{{user.email}}</p>
+
+                <ul class="list-group list-group-unbordered mb-3">
+                  <li class="list-group-item">
+                    <b>Account Number</b> <a class="float-right">{{user.account}}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Account Created</b> <a class="float-right">{{generateDate user.date "LLL"}}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Status</b> <a class="float-right text-capitalize">{{user.status}}</a>
+                  </li>
+                </ul>
+
+                <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-silver"><b>Update</b></a>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            </div>
+
+            <div class="col-md-4">
+             <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  {{!-- <img class="profile-user-img img-fluid img-circle"
+                       src="../../dist/img/user4-128x128.jpg"
+                       alt="User profile picture"> --}}
+                       <i class="fa fa-user" style="font-size: 100px;"></i>
+                </div>
+
+                <h3 class="profile-username text-center text-capitalize"> {{user.firstName}}  {{user.lastName}}</h3>
+
+                <p class="text-muted text-center">{{user.email}}</p>
+
+                <ul class="list-group list-group-unbordered mb-3">
+                  <li class="list-group-item">
+                    <b>Account Number</b> <a class="float-right">{{user.account}}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Account Created</b> <a class="float-right">{{generateDate user.date "LLL"}}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Status</b> <a class="float-right text-capitalize">{{user.status}}</a>
+                  </li>
+                </ul>
+                <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-gold"><b>Update</b></a>
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            </div>
+          <!-- /.col -->
+
+           <div class="col-md-4">
+             <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+                <div class="text-center">
+                  {{!-- <img class="profile-user-img img-fluid img-circle"
+                       src="../../dist/img/user4-128x128.jpg"
+                       alt="User profile picture"> --}}
+                       <i class="fa fa-user" style="font-size: 100px;"></i>
+                </div>
+
+                <h3 class="profile-username text-center text-capitalize"> {{user.firstName}}  {{user.lastName}}</h3>
+
+                <p class="text-muted text-center">{{user.email}}</p>
+
+                <ul class="list-group list-group-unbordered mb-3">
+                  <li class="list-group-item">
+                    <b>Account Number</b> <a class="float-right">{{user.account}}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Account Created</b> <a class="float-right">{{generateDate user.date "LLL"}}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>Status</b> <a class="float-right text-capitalize">{{user.status}}</a>
+                  </li>
+                </ul>
+
+                <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-platinum"><b>Update</b></a>
+
+              </div>
+              <!-- /.card-body -->
+            </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+
+
+
+
+ <!-- /Modal -->
+          <div class="modal fade" id="modal-silver">
+        <div class="modal-dialog">
+          <div class="modal-content bg-success">
+            <div class="modal-header">
+              <h4 class="modal-title">Silver Package</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-light">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
+      
+ <!-- /Modal -->
+          <div class="modal fade" id="modal-gold">
+        <div class="modal-dialog">
+          <div class="modal-content bg-success">
+            <div class="modal-header">
+              <h4 class="modal-title">Gold Package</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-light">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
+
+      
+ <!-- /Modal -->
+          <div class="modal fade" id="modal-platinum">
+        <div class="modal-dialog">
+          <div class="modal-content bg-success">
+            <div class="modal-header">
+              <h4 class="modal-title">Platinum Package</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>One fine body&hellip;</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-outline-light">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
+
+
+
+
+
+
+
+    </div>
+    </section>
+
+
+
+
+   
+
+
+
+
+       

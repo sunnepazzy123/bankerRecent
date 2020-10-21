@@ -2,11 +2,10 @@ const mongoose = require('mongoose');
 const Schema  = mongoose.Schema;
 
 //MAKING AN INSTANCE OF A CLASS MODEL
-const PassbookSchema = new Schema({
+const DepositSchema = new Schema({
 
 
     user: {
-
         type: Schema.Types.ObjectId,
         ref:'users'
  
@@ -19,28 +18,21 @@ const PassbookSchema = new Schema({
 
     },
 
-
-
-
-    debit:{
+    amount:{
 
         type: Number,
         required: true
 
     },
 
+    type:{
 
-
-
-    credit:{
-
-        type: Number,
+        type: String,
         required: true
-
     },
 
-    balance: {
-        type: Number,
+    status: {
+        type: String,
         required: true
     },
 
@@ -53,9 +45,6 @@ const PassbookSchema = new Schema({
         type: Date,
         default: Date.now(),
     },
-
-
-
 
 
 });
@@ -71,4 +60,4 @@ const PassbookSchema = new Schema({
 
 
 
-module.exports = mongoose.model('passbooks', PassbookSchema);
+module.exports = mongoose.model('deposit', DepositSchema);

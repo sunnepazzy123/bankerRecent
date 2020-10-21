@@ -19,14 +19,14 @@ const passport = require("passport");
 
 
 //DATABASE CONNECTION
-// const mongoDbUrl = "mongodb://localhost:27017/bankapp" ;
+const mongoDbUrl = "mongodb://localhost:27017/cryptobank" ;
 
     // const  mongoDbUrl = process.env.MONGO_DB_URI
     
 
 
 
-const mongoDbUrl = "mongodb://bankapp123:bankapp123@cluster0-shard-00-00-ul9hr.mongodb.net:27017,cluster0-shard-00-01-ul9hr.mongodb.net:27017,cluster0-shard-00-02-ul9hr.mongodb.net:27017/<dbname>?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority"
+// const mongoDbUrl = "mongodb://bankapp123:bankapp123@cluster0-shard-00-00-ul9hr.mongodb.net:27017,cluster0-shard-00-01-ul9hr.mongodb.net:27017,cluster0-shard-00-02-ul9hr.mongodb.net:27017/<dbname>?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority"
 
 mongoose.connect(mongoDbUrl, {useUnifiedTopology: true, useNewUrlParser: true } )
         .then(db=>{
@@ -89,7 +89,7 @@ res.locals.delete_message = req.flash("delete_message");
 //LOAD ROUTE
 const home = require("./routes/home/main");
 const admin = require("./routes/admin/index");
-const payment = require("./routes/admin/payment");
+// const payment = require("./routes/admin/payment");
 
 
 
@@ -98,7 +98,7 @@ const payment = require("./routes/admin/payment");
 //USE ROUTE
 app.use("/", home);
 app.use("/admin", admin);
-app.use("/admin/payment", payment);
+// app.use("/admin/payment", payment);
 
 
 

@@ -41,25 +41,6 @@ const UserSchema = new Schema({
 
     }, 
 
-    account: {
-        type: String,
-        required: true
-    },
-
-    pin: {
-        type: String,
-        default: "1234"
-    },
-
-    accountType: {
-        type: String,
-    },
-
-
-    file: {
-        type: String,     
-    },
-    
     date: {
         type: Date,
         default: Date.now()

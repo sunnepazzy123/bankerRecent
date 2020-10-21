@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../../models/User");
-const Passbook = require("../../models/Passbook");
+const EthWallet = require("../../models/EthereumWallet");
+const BtcWallet = require("../../models/BitcoinWallet");
+
 
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
@@ -33,7 +35,7 @@ router.get("/register",(req, res)=>{
 });
 
 //CREATING OUR REGISTER ROUTING
-router.post("/register",(req, res)=>{
+router.post("/register",  (req, res)=>{
 
     //CREATE AN ERROR MESSAGE
     let errors = [];
@@ -100,14 +102,13 @@ User.findOne({email: req.body.email}).then(userFound=>{
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email: req.body.email,
-                password: req.body.password,
-                account: Math.floor(Math.random() * 989764521),       
+                password: req.body.password,      
         });
 
     //SAVING THE MODEL INSTANCE
- newUser.save().then(user=>{
+    newUser.save().then(user=>{
 
-    //CREATING A LEDGER OBJECT
+    //CREATING A Btc LEDGER OBJECT
         let ledger = {
             remark: "Opening Balance",
             debit : 0,
@@ -117,11 +118,17 @@ User.findOne({email: req.body.email}).then(userFound=>{
             user: user.id,
         };
         //INSTANCIATING A PASSBOOK CLASS
-        const passbook = new Passbook(ledger);
-            //SAVING THAT  PASSBOOKINSTANCE TO MONGOOSE
-            passbook.save().then(passbook=>{
+        const btcWallet =  new BtcWallet(ledger);
+        const ethWallet =  new EthWallet(ledger);
+
+            //SAVING THAT  Btc Wallet INSTANCE TO MONGOOSE
+            btcWallet.save().then(btcWallet=>{
                 //REDIRECT PAGE TO LOGIN VIEW
-                res.redirect("/login");
+                ethWallet.save().then(ethWallet=>{
+
+                    res.redirect("/login");
+
+                });
 
  
 

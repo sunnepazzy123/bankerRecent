@@ -1,0 +1,138 @@
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          <span>
+            <i class="fa fa-address-book fa-lg" style="font-size:42px"></i>
+             {{!-- <i class="material-icons nav-icons" style="font-size: 40px;">person</i> --}}
+           <h1 style="display: inline;">Deposit Wallet</h1></span>
+            <hr>
+           
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active text-capitalize"> {{user.lastName}} </li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+   {{!-- {{user.id}} --}}
+    
+    <section class="content">
+      <div class="container-fluid">
+     
+        <div class="row profile animate__animated animate__fadeInLeft">
+           
+
+          <!-- /.col -->
+                  <!-- /.col -->
+          <div class="col-md-6">
+            <!-- Widget: user widget style 1 -->
+            <div class="card card-widget widget-user">
+              <!-- Add the bg color to the header using any of the bg-* classes -->
+              <div class="widget-user-header text-white"
+                   style="background: url('../dist/img/photo1.png') center center; height: 250px;">
+              </div>
+              {{!-- <div class="widget-user-image">
+                <img class="img-circle" src="../dist/img/user3-128x128.jpg" alt="User Avatar">
+              </div> --}}
+              <div class="card-body">
+                <div>
+                <b>Deposit Amount</b> <p class="float-right"><b>${{depositAmt}} </b></p>
+                </div>
+                <b>Deposit Type</b> <p class="float-right"><b>{{BTC}}</b></p>
+
+                 
+ 
+              </div>
+              <div class="card-footer">
+                <div class="row">
+                <ul class="list-group list-group-unbordered mb-3"></ul>
+             
+                <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-silver"><b>Pay Now</b></a>
+                    
+          
+           
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </div>
+            </div>
+            <!-- /.widget-user -->
+          </div>
+          <!-- /.col -->
+
+       
+        </div>
+        <!-- /.row -->
+
+
+
+
+
+
+ <!-- /Modal -->
+          <div class="modal fade" id="modal-silver">
+        <div class="modal-dialog">
+          <div class="modal-content bg-success">
+            <div class="modal-header">
+              <h4 class="modal-title">Bitcoin Deposit</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                      <!-- /.card -->
+
+                      
+            <!-- Horizontal Form -->
+            <div class="card card-info">
+              <!-- form start -->
+              <form class="form-horizontal" action="/admin/deposit_preview" method="POST" >
+                <div class="card-body">
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Deposit Preview</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" name="depositAmt" id="inputEmail3" placeholder="Deposit Amount">
+                      <input type="text" value={{BTC}} name="BTC" />
+                    </div>
+                  </div>
+          
+                </div>
+                <!-- /.card-body -->      
+                <!-- /.card-footer -->
+            </div>
+            <!-- /.card -->
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-outline-light">Deposit Now</button>
+            </div>
+              </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.modal -->
+
+
+
+    </div>
+    </section>
+
+
+
+
+   
+
+
+
+
+       

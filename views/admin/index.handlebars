@@ -29,13 +29,13 @@
            <!-- /.row -->
         <div class="row ">
          
-            <div class="col-md-6">
+            <div class="col-md-3">
             <!-- Widget: user widget style 1 -->
             <div class="card card-widget widget-user">
               <!-- Add the bg color to the header using any of the bg-* classes -->
               <div class="widget-user-header bg-info">
-                <h3 class="widget-user-username">Available Balance</h3>
-                {{#each lastPassbook}}
+                <h3 class="widget-user-username">Btc Wallet</h3>
+                {{#each LastBtcWallet}}
                 <b style="font-size: 30px;">{{currencyFormat balance}}</b>
                 {{/each}}
               </div>
@@ -45,13 +45,49 @@
           </div>
           <!-- /.col -->
 
-          <div class="col-md-6">
+          <div class="col-md-3">
             <!-- Widget: user widget style 1 -->
             <div class="card card-widget widget-user">
               <!-- Add the bg color to the header using any of the bg-* classes -->
               <div class="widget-user-header bg-info">
-                <h3 class="widget-user-username">Account Type</h3>   
-                <b class="text-capitalize" style="font-size: 30px;">{{user.accountType}}</b>               
+                <h3 class="widget-user-username">Ethereum Wallet</h3>   
+                {{#each LastEthWallet}}
+                  <b style="font-size: 30px;">{{currencyFormat balance}}</b>
+                  {{/each}}           
+              </div>
+               
+            </div>
+            <!-- /.widget-user -->
+          </div>
+          <!-- /.col -->
+           <!-- /.col -->
+
+          <div class="col-md-3">
+            <!-- Widget: user widget style 1 -->
+            <div class="card card-widget widget-user">
+              <!-- Add the bg color to the header using any of the bg-* classes -->
+              <div class="widget-user-header bg-info">
+                <h3 class="widget-user-username">Total Deposit</h3>   
+                {{#each LastEthWallet}}
+                  <b style="font-size: 30px;">{{currencyFormat balance}}</b>
+                  {{/each}}           
+              </div>
+               
+            </div>
+            <!-- /.widget-user -->
+          </div>
+          <!-- /.col -->
+           <!-- /.col -->
+
+          <div class="col-md-3">
+            <!-- Widget: user widget style 1 -->
+            <div class="card card-widget widget-user">
+              <!-- Add the bg color to the header using any of the bg-* classes -->
+              <div class="widget-user-header bg-info">
+                <h3 class="widget-user-username">Total Withdrawal</h3>   
+                {{#each LastEthWallet}}
+                  <b style="font-size: 30px;">{{currencyFormat balance}}</b>
+                  {{/each}}           
               </div>
                
             </div>
@@ -59,7 +95,7 @@
           </div>
           <!-- /.col -->
         </div>
-
+d
       </div><!-- /.container-fluid -->
       
     </section>
