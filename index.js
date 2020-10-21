@@ -19,7 +19,7 @@ const passport = require("passport");
 
 
 //DATABASE CONNECTION
-const mongoDbUrl = "mongodb://localhost:27017/cryptobank" ;
+// const mongoDbUrl = "mongodb://localhost:27017/cryptobank" ;
 
     // const  mongoDbUrl = process.env.MONGO_DB_URI
     
