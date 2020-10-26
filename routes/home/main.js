@@ -3,6 +3,8 @@ const router = express.Router();
 const User = require("../../models/User");
 const EthWallet = require("../../models/EthereumWallet");
 const BtcWallet = require("../../models/BitcoinWallet");
+const Transaction = require("../../models/Transaction");
+
 
 
 const bcrypt = require('bcryptjs');
@@ -117,16 +119,38 @@ User.findOne({email: req.body.email}).then(userFound=>{
             reference: Math.floor(Math.random() * 94521),
             user: user.id,
         };
+
+        let ledgerTransac = {
+            description: "Opening Balance",
+            capital : 0,
+            interest: 0,
+            cummInterest: 0,
+            capitalWithdraw: 0,
+            interestWithdraw: 0,
+            total: 0,
+            balance: 0,
+            status: "unapproved",
+            reference: Math.floor(Math.random() * 94521),
+            user: user.id,
+        };
+
+        //Deposit History
         //INSTANCIATING A PASSBOOK CLASS
         const btcWallet =  new BtcWallet(ledger);
         const ethWallet =  new EthWallet(ledger);
+        const passbook = new Transaction(ledgerTransac);
 
             //SAVING THAT  Btc Wallet INSTANCE TO MONGOOSE
             btcWallet.save().then(btcWallet=>{
                 //REDIRECT PAGE TO LOGIN VIEW
                 ethWallet.save().then(ethWallet=>{
+                    
+                    passbook.save().then(passbook=>{
 
-                    res.redirect("/login");
+                        res.redirect("/login");                        
+                    });
+
+                   
 
                 });
 

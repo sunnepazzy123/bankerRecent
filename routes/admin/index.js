@@ -3,6 +3,8 @@ const router  = express.Router();
 const User = require("../../models/User");
 const EthWallet = require("../../models/EthereumWallet");
 const BtcWallet = require("../../models/BitcoinWallet");
+const Deposit = require("../../models/Deposit");
+
 
 const {userAuthenticated, userAwaitAcc} = require('../../helpers/authethication');
 const {isEmpty, uploadDir} = require('../../helpers/upload-helpers');
@@ -21,18 +23,21 @@ router.all("/*", userAuthenticated, (req, res, next)=>{
 
 router.get("/", (req, res)=>{
 
-    BtcWallet.find({user: req.user.id})
-     .sort({_id: -1})
-     .limit(1)
+    BtcWallet.find({user: req.user.id}).sort({_id: -1}).limit(1)
      .then(LastBtcWallet=>{
         // console.log(passbook) 
         
-        EthWallet.find({user: req.user.id})
-                .sort({_id: -1})
-                .limit(1)
+        EthWallet.find({user: req.user.id}).sort({_id: -1}).limit(1)
                 .then(LastEthWallet=>{
+
+         Deposit.find({user: req.user.id})
+                .then(TotalDeposit=>{
+
+                //    res.json({TotalDeposit, LastBtcWallet, LastEthWallet})
                     res.render("admin/", {LastBtcWallet: LastBtcWallet, LastEthWallet: LastEthWallet });
 
+
+                });
 
                 });
                 
@@ -92,16 +97,46 @@ router.post("/deposit", (req, res)=>{
 
 
 router.post("/deposit_preview", async (req, res)=>{
-    // console.log(req.user.id)
+
     //Request amount from depositors
     const {depositAmt, BTC} = req.body;
     // console.log(depositAmt, BTC);
-    //Retrieve the data from the btc wallet
-    const btcWallet = await BtcWallet.findOne({user: req.user.id});
-        // console.log(btcWallet);
+    //Retrieve the user data from the btc wallet
+    const btcWallet = await BtcWallet.findOne({user: req.user.id}).sort({_id: -1}).limit(1);
+    // console.log( btcWallet.balance)
+    // //create a  response constance variable from bitpay for success
+    const response = {
+        amount: depositAmt,
+        type: "BTC",
+        reference: Math.floor(Math.random(100, 900) * 9999),
+        remark: "alert deposit",
+        user: req.user.id,
+        status: "success",
+        date: Date.now()
+    }
 
-
-    // res.render("admin/deposit_preview", {depositAmt, BTC});
+    // //Add the response to your wallet
+        let newWalletAmount = Number(response.amount) + Number(btcWallet.balance)
+        //Create an invoice to the wallet from the deposit response from Api 
+        let walletLedger = {
+            debit: 0,
+            credit: response.amount,
+            balance: newWalletAmount,
+            reference: response.reference,
+            remark: "alert deposit",
+            user: req.user.id
+        }
+    
+      
+        // // //Add the deposit Amount to the user deposit history
+        let userWalletDeposit = await Deposit.create(response);
+        // Add the deposit Amount to the Btc Wallet
+        let updateWallet = await BtcWallet.create(walletLedger);
+        
+       
+        // // console.log(userWalletDeposit)
+        res.redirect("/admin");
+      
 
 });
 

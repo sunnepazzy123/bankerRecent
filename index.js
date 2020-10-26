@@ -19,16 +19,16 @@ const passport = require("passport");
 
 
 //DATABASE CONNECTION
-// const mongoDbUrl = "mongodb://localhost:27017/cryptobank" ;
+const mongoDbUrl = "mongodb://localhost:27017/cryptobank" ;
 
     // const  mongoDbUrl = process.env.MONGO_DB_URI
     
-
+const mongoDbUri = "mongodb+srv://sunnepazzy_20:sunnepazzy_20@cluster0.xgyxi.mongodb.net/cryptonew?retryWrites=true&w=majority"
 
 
 // const mongoDbUrl = "mongodb://bankapp123:bankapp123@cluster0-shard-00-00-ul9hr.mongodb.net:27017,cluster0-shard-00-01-ul9hr.mongodb.net:27017,cluster0-shard-00-02-ul9hr.mongodb.net:27017/<dbname>?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority"
 
-mongoose.connect(mongoDbUrl, {useUnifiedTopology: true, useNewUrlParser: true } )
+mongoose.connect(mongoDbUri, {useUnifiedTopology: true, useNewUrlParser: true } )
         .then(db=>{
             console.log("Mongo Connect");
         }).catch(error => console.log(error));
