@@ -16,6 +16,27 @@ const PackageSchema = new Schema({
 
     },
 
+    amount: {
+        type: Number,
+        required: true
+
+    },
+
+    interest: {
+        type: Number,
+        required: true
+    },
+
+    income: {
+        type: Number,
+        required: true
+    },
+
+    finalBalance: {
+        type: Number,
+        required: true
+    },
+
 
     startDate:{
         type: Date,
@@ -23,15 +44,23 @@ const PackageSchema = new Schema({
 
     },
 
-    date: {
+    endDate: {
         type: Date,
-        default: Date.now()
     },
     
+    duration: {
+        type: String,
+        default: "inmatured"
+    },
+
     status: {
         type: String,
-        default: "unapproved"
+
     }
+
+    
+
+
 
 
 

@@ -1,12 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../../models/User");
-const EthWallet = require("../../models/EthereumWallet");
-const BtcWallet = require("../../models/BitcoinWallet");
+const UsdWallet = require("../../models/UsdWallet");
 const Transaction = require("../../models/Transaction");
-
-
-
+const Package = require("../../models/Package");
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -28,6 +25,14 @@ router.get("/", (req, res)=>{
 
 router.get("/about", (req, res)=>{
     res.render("home/about")
+});
+
+router.get("/contact", (req, res)=>{
+    res.render("home/contact")
+});
+
+router.get("/services", (req, res)=>{
+    res.render("home/services")
 });
 
 
@@ -120,41 +125,22 @@ User.findOne({email: req.body.email}).then(userFound=>{
             user: user.id,
         };
 
-        let ledgerTransac = {
-            description: "Opening Balance",
-            capital : 0,
-            interest: 0,
-            cummInterest: 0,
-            capitalWithdraw: 0,
-            interestWithdraw: 0,
-            total: 0,
-            balance: 0,
-            status: "unapproved",
-            reference: Math.floor(Math.random() * 94521),
-            user: user.id,
-        };
-
+       
         //Deposit History
         //INSTANCIATING A PASSBOOK CLASS
-        const btcWallet =  new BtcWallet(ledger);
-        const ethWallet =  new EthWallet(ledger);
-        const passbook = new Transaction(ledgerTransac);
+        const usdWallet =  new UsdWallet(ledger);
+      
 
             //SAVING THAT  Btc Wallet INSTANCE TO MONGOOSE
-            btcWallet.save().then(btcWallet=>{
+            usdWallet.save().then(usdWallet=>{
                 //REDIRECT PAGE TO LOGIN VIEW
-                ethWallet.save().then(ethWallet=>{
-                    
-                    passbook.save().then(passbook=>{
 
-                        res.redirect("/login");                        
-                    });
+                req.flash('success_message', 'You are now registered, please login');
+                        
+                res.redirect("/login");
+          
+                 
 
-                   
-
-                });
-
- 
 
             }).catch(err=>{
                 console.log(err);

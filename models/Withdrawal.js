@@ -14,7 +14,6 @@ const WithdrawalSchema = new Schema({
     remark:{
 
         type: String,
-        required: true
 
     },
 
@@ -25,7 +24,11 @@ const WithdrawalSchema = new Schema({
 
     },
 
-    type:{
+    walletAddress: {
+        type: String,
+    },
+
+    walletType:{
 
         type: String,
         required: true

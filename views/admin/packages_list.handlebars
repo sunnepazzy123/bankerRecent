@@ -1,0 +1,60 @@
+   <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">List of Packages</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Packages</th>
+                      <th> Start Date</th>
+                      <th> Amount </th>
+                      <th>Interest </th>
+                      <th>Final Balance</th>
+                      <th>Income</th>
+                       <th>End Date</th>
+                      <th>Status</th>
+                      <th>Duration</th>
+                 
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each packages}}
+                    <tr>
+                      <td>183</td>
+                      <td>{{packagePlan}}</td>
+                      <td>{{generateDate startDate "LLL"}}</td>
+                      <td>${{amount}}</td>
+                      <td>{{interest}}</td>
+                      <td>${{finalBalance}}</td>
+                      <td>${{income}}</td>
+                      <td>{{generateDate endDate "LLL"}}</td>
+                      <td><span class="tag tag-success">{{status}}</span></td>
+                      <td>{{duration}}</td>
+                      
+                    </tr>
+                    {{/each}}
+                
+               
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>

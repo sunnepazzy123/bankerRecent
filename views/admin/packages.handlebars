@@ -6,7 +6,7 @@
           <span>
             <i class="fa fa-address-book fa-lg" style="font-size:42px"></i>
              {{!-- <i class="material-icons nav-icons" style="font-size: 40px;">person</i> --}}
-           <h1 style="display: inline;">Packages</h1></span>
+           <h1 style="display: inline;">Select Packages</h1></span>
             <hr>
            
           </div>
@@ -32,95 +32,50 @@
          <div class="col-md-4">
              <div class="card card-primary card-outline">
               <div class="card-body box-profile">
-                <div class="text-center">
-                  {{!-- <img class="profile-user-img img-fluid img-circle"
-                       src="../../dist/img/user4-128x128.jpg"
-                       alt="User profile picture"> --}}
-                       <i class="fa fa-user" style="font-size: 100px;"></i>
+                <div class="text-center card card-widget widget-user">
+                    <div class="widget-user-header text-white"
+                    style="background: url('../img/silverMembership.png') center center;">
+                     </div>          
                 </div>
 
-                <h3 class="profile-username text-center text-capitalize"> {{user.firstName}}  {{user.lastName}}</h3>
-
-                <p class="text-muted text-center">{{user.email}}</p>
-
-                <ul class="list-group list-group-unbordered mb-3">
-                  <li class="list-group-item">
-                    <b>Account Number</b> <a class="float-right">{{user.account}}</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Account Created</b> <a class="float-right">{{generateDate user.date "LLL"}}</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Status</b> <a class="float-right text-capitalize">{{user.status}}</a>
-                  </li>
-                </ul>
-
-                <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-silver"><b>Update</b></a>
+                <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-silver"><b>Silver Plan</b></a>
               </div>
               <!-- /.card-body -->
             </div>
             </div>
 
-            <div class="col-md-4">
+              <div class="col-md-4">
              <div class="card card-primary card-outline">
               <div class="card-body box-profile">
-                <div class="text-center">
-                  {{!-- <img class="profile-user-img img-fluid img-circle"
-                       src="../../dist/img/user4-128x128.jpg"
-                       alt="User profile picture"> --}}
-                       <i class="fa fa-user" style="font-size: 100px;"></i>
+             <div class="text-center card card-widget widget-user">
+                    <div class="widget-user-header text-white"
+                    style="background: url('../img/goldMembership.png') center center;">
+                     </div>          
                 </div>
 
-                <h3 class="profile-username text-center text-capitalize"> {{user.firstName}}  {{user.lastName}}</h3>
 
-                <p class="text-muted text-center">{{user.email}}</p>
-
-                <ul class="list-group list-group-unbordered mb-3">
-                  <li class="list-group-item">
-                    <b>Account Number</b> <a class="float-right">{{user.account}}</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Account Created</b> <a class="float-right">{{generateDate user.date "LLL"}}</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Status</b> <a class="float-right text-capitalize">{{user.status}}</a>
-                  </li>
-                </ul>
-                <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-gold"><b>Update</b></a>
+                <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-platinum"><b>Gold Plan</b></a>
 
               </div>
               <!-- /.card-body -->
             </div>
             </div>
-          <!-- /.col -->
+
+       
 
            <div class="col-md-4">
              <div class="card card-primary card-outline">
               <div class="card-body box-profile">
-                <div class="text-center">
-                  {{!-- <img class="profile-user-img img-fluid img-circle"
-                       src="../../dist/img/user4-128x128.jpg"
-                       alt="User profile picture"> --}}
-                       <i class="fa fa-user" style="font-size: 100px;"></i>
+                
+                <div class="text-center card card-widget widget-user">
+                    <div class="widget-user-header text-white"
+                    style="background: url('../img/platinumMembership.png') center center;">
+                     </div>          
                 </div>
 
-                <h3 class="profile-username text-center text-capitalize"> {{user.firstName}}  {{user.lastName}}</h3>
+            
 
-                <p class="text-muted text-center">{{user.email}}</p>
-
-                <ul class="list-group list-group-unbordered mb-3">
-                  <li class="list-group-item">
-                    <b>Account Number</b> <a class="float-right">{{user.account}}</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Account Created</b> <a class="float-right">{{generateDate user.date "LLL"}}</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Status</b> <a class="float-right text-capitalize">{{user.status}}</a>
-                  </li>
-                </ul>
-
-                <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-platinum"><b>Update</b></a>
+                <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-platinum"><b>Platinum Plan</b></a>
 
               </div>
               <!-- /.card-body -->
@@ -148,8 +103,11 @@
               <p>One fine body&hellip;</p>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-outline-light">Save changes</button>
+              <form action="/admin/packages/silver" method="post" >
+                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-outline-light">Silver Package</button>
+              </form>
+              
             </div>
           </div>
           <!-- /.modal-content -->

@@ -1,0 +1,75 @@
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+          <span>
+            <i class="fa fa-address-book fa-lg" style="font-size:42px"></i>
+           <h1 style="display: inline;">Packages Silver</h1></span>
+            <hr>
+           
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active text-capitalize"> {{user.lastName}} </li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+     
+        <div class="row profile animate__animated animate__fadeInLeft">
+
+         <div class="col-md-6">
+             <div class="card card-primary card-outline">
+              <div class="card-body box-profile">
+                <div class="text-center card card-widget widget-user">
+                    <div class="widget-user-header text-white"
+                    style="background: url('../dist/img/photo1.png') center center;">
+                     </div>          
+                </div>
+
+                <form action="/admin/silver/subcribe" method="post">
+                       <input type="text" placeholder="Enter your amount" name="amount"  />
+
+                       <select name="duration">
+                           <option value="3 MONTHS">3 MONTHS</option>
+                           <option value="6 MONTHS">6 MONTHS</option>
+                           <option value="9 MONTHS">9 MONTHS</option>
+
+                       </select>
+
+                       <button type="submit" class="btn btn-primary btn-block" ><b>Subcribe</b></a>
+
+              
+                </form>
+             
+              </div>
+              <!-- /.card-body -->
+            </div>
+            </div>
+
+
+       
+        </div>
+        <!-- /.row -->
+
+
+
+    </div>
+    </section>
+
+
+
+
+   
+
+
+
+
+       

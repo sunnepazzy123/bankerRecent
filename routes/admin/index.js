@@ -1,9 +1,10 @@
 const express = require("express");
 const router  = express.Router();
 const User = require("../../models/User");
-const EthWallet = require("../../models/EthereumWallet");
-const BtcWallet = require("../../models/BitcoinWallet");
+const UsdWallet = require("../../models/UsdWallet");
 const Deposit = require("../../models/Deposit");
+const Package = require("../../models/Package");
+const Withdrawal = require("../../models/Withdrawal");
 
 
 const {userAuthenticated, userAwaitAcc} = require('../../helpers/authethication');
@@ -21,33 +22,24 @@ router.all("/*", userAuthenticated, (req, res, next)=>{
 });
 
 
-router.get("/", (req, res)=>{
+router.get("/", async (req, res)=>{
 
-    BtcWallet.find({user: req.user.id}).sort({_id: -1}).limit(1)
-     .then(LastBtcWallet=>{
-        // console.log(passbook) 
-        
-        EthWallet.find({user: req.user.id}).sort({_id: -1}).limit(1)
-                .then(LastEthWallet=>{
+    try {
 
-         Deposit.find({user: req.user.id})
-                .then(TotalDeposit=>{
-
-                //    res.json({TotalDeposit, LastBtcWallet, LastEthWallet})
-                    res.render("admin/", {LastBtcWallet: LastBtcWallet, LastEthWallet: LastEthWallet });
-
-
-                });
-
-                });
-                
-
-
-    }).catch(err=>{
-        console.log(err);
-    });
-
+        const LastUsdWallet   = await UsdWallet.find({user: req.user.id}).sort({_id: -1}).limit(1);
+        const Packager    = await Package.find({user: req.user.id}).sort({_id: -1}).limit(1);
     
+            res.render("admin/", {LastUsdWallet: LastUsdWallet, Packager: Packager});
+        
+    } catch (error) {
+
+        console.log(error);
+        
+    }
+
+
+
+
   
 });
 
@@ -79,6 +71,277 @@ router.get("/package/silver", (req, res)=>{
     
 });
 
+router.post("/packages/silver",  (req, res)=>{
+
+    res.render("admin/silver_plan");
+
+
+});
+
+router.post("/silver/subcribe", async (req, res)=>{
+
+    const {amount,  duration} = req.body;
+    let interest;
+    let income;
+    let finalBalance;
+    let endDate;
+
+    let packagee;
+
+    if(duration == "3 MONTHS"){
+         interest = 0.1;
+         endDate = 90;
+    }
+    if(duration == "6 MONTHS"){
+        interest = 0.11;
+        endDate = 180;
+   }
+   if(duration == "9 MONTHS"){
+    interest = 0.12;
+    endDate = 270;
+    }
+
+    //to get the current income
+    income = amount * interest;
+
+    // console.log("this is the income ", income);
+
+    //get the finalbalance
+    finalBalance = Number(amount) + Number(income);
+
+    // console.log("this is the final balance ", finalBalance);
+
+    // console.log("this is the end date duration ", endDate);
+    // console.log(typeof endDate);
+
+
+    //to get the current date
+    let currentDate = new Date();
+
+    // console.log("this is the current date " , currentDate);
+
+    function addDays(date, days){
+        const copy = new Date(Number(date));
+        copy.setDate(date.getDate() + days);
+        return copy;
+    }
+
+    
+    //to get future end date
+    let futureDate = addDays(currentDate, endDate)
+    // console.log("this is the future date " , futureDate);
+
+
+
+
+    //Retrieve Wallet balance
+    const usdWallet = await UsdWallet.findOne({user: req.user.id}).sort({_id: -1}).limit(1);
+    //Rretrieve Package 
+    const package = await Package.findOne({user: req.user.id}).sort({_id: -1}).limit(1);
+    console.log(package)
+    //
+    // // console.log(usdWallet)
+    const newAmount = usdWallet.balance - amount;
+    // // console.log(newAmount);
+
+    if(package === null){
+         packagee = {
+            status: "unsubcribe"
+        }
+    
+    }else{
+        packagee = {
+            status: "subcribe"
+        }
+    }
+
+
+    if(packagee.status == "subcribe"){
+        req.flash('error_message', 'You are still on a current packages');
+        res.redirect("/admin/packages/silver");
+
+    }
+ 
+    if(usdWallet.balance >= 100 && amount >= 100){
+
+        if(amount > usdWallet.balance){
+
+            req.flash('error_message', 'The amount is too large than the your wallet amount');
+            res.redirect("/admin/packages/silver");
+
+        }else{
+            //create a new wallet ledger
+            let walletLedger = {
+                debit: amount,
+                credit: 0,
+                balance: newAmount,
+                reference: Math.floor(Math.random(100, 900) * 9999),
+                remark: "debit wallet",
+                user: req.user.id
+            }
+    
+        // select package plan
+            let packagePlan = {
+                    packagePlan: "Silver Plan",
+                    user: req.user.id,
+                    amount: amount,
+                    interest: interest,
+                    income: income,
+                    finalBalance: finalBalance,
+                    duration: duration,
+                    endDate: futureDate,
+                    status: "subcribe"
+            }
+
+
+            // console.log(packagePlan)
+        
+            let updateWallet = await UsdWallet.create(walletLedger);
+        
+            let newPackage =  await Package.create(packagePlan);
+        
+            // console.log(newPackage);
+            // console.log(updateWallet);
+            req.flash('success_message', 'Your package have been created');
+            
+            res.redirect("/admin");
+
+        }
+
+     
+    
+
+    }else{
+
+        req.flash('error_message', 'The wallet amount is too small for subcribing or amount is too small for subcription');
+        res.redirect("/admin/packages/silver");
+
+    }
+
+ 
+
+});
+
+router.get("/packages/silver", (req, res)=>{
+    res.render("admin/silver_plan")
+});
+
+
+
+
+
+
+
+
+
+router.get("/packages_list", async (req, res)=>{
+
+    const packages = await Package.find({user: req.user.id})
+
+    console.log(packages);
+
+
+
+    res.render("admin/packages_list", {packages: packages});
+})
+
+
+router.get("/withdraw", async(req, res)=>{
+    res.render("admin/withdraw")
+})
+
+router.get("/withdraw/wallet", async(req, res)=>{
+    res.render("admin/wallet_withdrawal");
+});
+
+router.post("/withdraw/wallet", async(req, res)=>{
+
+    const {walletAddress, amount, walletType} = req.body;
+
+    //check the wallet balance 
+    const usdWallet = await UsdWallet.findOne({user: req.user.id}).sort({_id: -1}).limit(1);
+    // console.log(usdWallet)
+    //get the final balance
+    let finalBalance = Number(usdWallet.balance) - Number(amount);
+
+    if(amount > usdWallet.balance ){
+
+        req.flash('error_message', `Your withdrawal amount is greater your wallet balance`);
+        res.redirect("/admin/withdraw/wallet");
+
+    }else{
+
+        
+    //create a new wallet instance
+    let walletLedger = {
+        debit: amount,
+        credit: 0,
+        balance: finalBalance,
+        reference: Math.floor(Math.random(10000, 90000) * 9999999),
+        remark: "withdrawal debit",
+        user: req.user.id
+    }
+
+    // console.log(walletLedger)
+
+    // //make a withdrawal slip
+    const withdrawalSlip = {
+        walletAddress: walletAddress,
+        amount: amount,
+        walletType: walletType,
+        status: "approve",
+        reference: Math.floor(Math.random(10000, 90000) * 9999999),
+        user: req.user.id
+
+    }
+
+        //Create a new wallet instance
+        const newWalletInstance = await UsdWallet.create(walletLedger);
+  
+        const withdrawalInstance = await Withdrawal.create(withdrawalSlip);
+
+        // console.log(withdrawalInstance)
+
+
+        req.flash('success_message', `Your withdrawal of $${amount} have been created`);
+        res.redirect("/admin/");
+
+    }
+
+
+
+
+    
+});
+
+router.get("/withdraw/income", async(req, res)=>{
+    res.render("admin/package_withdrawal");
+});
+
+router.get("/withdraw/history", async(req, res)=>{
+
+
+    const withdrawalHistory = await Withdrawal.find({user: req.user.id}).sort({_id: -1}).limit(1);
+    console.log(withdrawalHistory)
+    res.render("admin/withdrawal_history" , {withdrawalHistory: withdrawalHistory});
+});
+
+router.get("/withdrawal_request", async(req, res)=>{
+
+    const withdrawalHistory = await Withdrawal.find({});
+
+
+    res.render("admin/withdrawal_request", {withdrawalHistory: withdrawalHistory})
+});
+
+
+router.get("/deposit_history", async(req, res)=>{
+
+    const depositHistory = await Deposit.find({});
+    res.render("admin/deposit_history", {depositHistory: depositHistory});
+});
+
+
 
 router.get("/deposit", (req, res)=>{
 
@@ -91,9 +354,13 @@ router.post("/deposit", (req, res)=>{
     const {depositAmt, BTC} = req.body;
  
     // console.log(depositAmt)
+
     res.render("admin/deposit_preview", {depositAmt, BTC});
 
 });
+
+
+
 
 
 router.post("/deposit_preview", async (req, res)=>{
@@ -101,9 +368,9 @@ router.post("/deposit_preview", async (req, res)=>{
     //Request amount from depositors
     const {depositAmt, BTC} = req.body;
     // console.log(depositAmt, BTC);
-    //Retrieve the user data from the btc wallet
-    const btcWallet = await BtcWallet.findOne({user: req.user.id}).sort({_id: -1}).limit(1);
-    // console.log( btcWallet.balance)
+    //Retrieve the user data from the usd wallet
+    const usdWallet = await UsdWallet.findOne({user: req.user.id}).sort({_id: -1}).limit(1);
+    // console.log( UsdWallet.balance)
     // //create a  response constance variable from bitpay for success
     const response = {
         amount: depositAmt,
@@ -116,7 +383,7 @@ router.post("/deposit_preview", async (req, res)=>{
     }
 
     // //Add the response to your wallet
-        let newWalletAmount = Number(response.amount) + Number(btcWallet.balance)
+        let newWalletAmount = Number(response.amount) + Number(usdWallet.balance)
         //Create an invoice to the wallet from the deposit response from Api 
         let walletLedger = {
             debit: 0,
@@ -131,10 +398,11 @@ router.post("/deposit_preview", async (req, res)=>{
         // // //Add the deposit Amount to the user deposit history
         let userWalletDeposit = await Deposit.create(response);
         // Add the deposit Amount to the Btc Wallet
-        let updateWallet = await BtcWallet.create(walletLedger);
+        let updateWallet = await UsdWallet.create(walletLedger);
         
        
         // // console.log(userWalletDeposit)
+        req.flash('success_message', `Your deposit of $${depositAmt} have been created`);
         res.redirect("/admin");
       
 

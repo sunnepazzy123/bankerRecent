@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema  = mongoose.Schema;
 
 //MAKING AN INSTANCE OF A CLASS MODEL
-const EthWalletSchema = new Schema({
+const UsdWalletSchema = new Schema({
 
 
     user: {
@@ -17,9 +17,6 @@ const EthWalletSchema = new Schema({
         required: true
 
     },
-
-
-
 
     debit:{
 
@@ -51,9 +48,6 @@ const EthWalletSchema = new Schema({
     },
 
 
-
-
-
 });
 
 
@@ -67,4 +61,4 @@ const EthWalletSchema = new Schema({
 
 
 
-module.exports = mongoose.model('ethereum-wallet', EthWalletSchema);
+module.exports = mongoose.model('usd-wallet', UsdWalletSchema);

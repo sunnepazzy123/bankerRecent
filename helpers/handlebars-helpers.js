@@ -53,7 +53,31 @@ module.exports = {
     
                </p>
              </a>
-           </li>`;
+           </li>
+
+           <li class="nav-item">
+             <a href="/admin/withdrawal_request" class="nav-link">
+               <i class="nav-icon fas fa-user-tie"></i>
+               <p>
+                 Withdrawal Requests
+    
+               </p>
+             </a>
+           </li>
+
+           
+           <li class="nav-item">
+             <a href="/admin/withdrawal_request" class="nav-link">
+               <i class="nav-icon fas fa-user-tie"></i>
+               <p>
+                 View Subcriber's Packages
+               </p>
+             </a>
+           </li>
+           
+           
+           
+           `;
 
            return options.fn() + output;
 

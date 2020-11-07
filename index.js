@@ -12,6 +12,8 @@ const flash = require("connect-flash");
 const fileUpload = require("express-fileupload");
 const methodOverride = require("method-override");
 const passport = require("passport");
+const cron = require('node-cron');
+const Package = require("./models/Package");
 // const {mongoDbUrl} = require("./config/database");
 // require("dotenv").config();
 
@@ -23,14 +25,14 @@ const mongoDbUrl = "mongodb://localhost:27017/cryptobank" ;
 
     // const  mongoDbUrl = process.env.MONGO_DB_URI
     
-const mongoDbUri = "mongodb+srv://sunnepazzy_20:sunnepazzy_20@cluster0.xgyxi.mongodb.net/cryptonew?retryWrites=true&w=majority"
+// const mongoDbUri = "mongodb+srv://sunnepazzy_20:sunnepazzy_20@cluster0.xgyxi.mongodb.net/cryptonew?retryWrites=true&w=majority"
 
 
 // const mongoDbUrl = "mongodb://bankapp123:bankapp123@cluster0-shard-00-00-ul9hr.mongodb.net:27017,cluster0-shard-00-01-ul9hr.mongodb.net:27017,cluster0-shard-00-02-ul9hr.mongodb.net:27017/<dbname>?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority"
 
-mongoose.connect(mongoDbUri, {useUnifiedTopology: true, useNewUrlParser: true } )
+mongoose.connect(mongoDbUrl, {useUnifiedTopology: true, useNewUrlParser: true } )
         .then(db=>{
-            console.log("Mongo Connect");
+            console.log("Mongo Connected");
         }).catch(error => console.log(error));
  
 
@@ -90,6 +92,17 @@ res.locals.delete_message = req.flash("delete_message");
 const home = require("./routes/home/main");
 const admin = require("./routes/admin/index");
 // const payment = require("./routes/admin/payment");
+
+
+//Task scheduler CronJob
+
+//  cron.schedule('*/10 * * * * *', async ()=>{
+//    console.log('Automated Task running every 10seconds');
+//     const pkg = await Package.find({});
+
+//     console.log(pkg)
+
+//  });
 
 
 

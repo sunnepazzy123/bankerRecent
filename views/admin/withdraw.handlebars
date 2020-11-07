@@ -3,7 +3,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <h1 class="m-0 text-dark">Make A Withdrawal</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -21,15 +21,14 @@
            <!-- /.row -->
         <div class="row ">
          
-            <div class="col-md-3">
+            <div class="col-md-6">
             <!-- Widget: user widget style 1 -->
             <div class="card card-widget widget-user">
               <!-- Add the bg color to the header using any of the bg-* classes -->
               <div class="widget-user-header bg-info">
-                <h3 class="widget-user-username">Usd Wallet</h3>
-                {{#each LastUsdWallet}}
-                <b style="font-size: 30px;">{{currencyFormat balance}}</b>
-                {{/each}}
+                <a href="/admin/withdraw/wallet">
+                <h3 class="widget-user-username">Wallet</h3>     
+                </a>
               </div>
                
             </div>
@@ -38,27 +37,15 @@
           <!-- /.col -->
 
              
-            <div class="col-md-3">
+            <div class="col-md-6">
             <!-- Widget: user widget style 1 -->
             <div class="card card-widget widget-user">
               <!-- Add the bg color to the header using any of the bg-* classes -->
               <div class="widget-user-header bg-info">
+                <a href="/admin/withdraw/income">
                 <h3 class="widget-user-username">Package Income</h3>
-                {{#if Packager}}
-
-                {{#each Packager}}
-                <b style="font-size: 30px;">{{currencyFormat income}}</b>
-                {{/each}}
-
-                {{else}}
-
-                
-                <b style="font-size: 30px;">$0.00</b>
-            
-                {{/if}}
-
-
-
+                </a>
+               
               </div>
                
             </div>
